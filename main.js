@@ -135,12 +135,19 @@ $(document).ready(function(){
     // proprio nome.
 
     icons.forEach((thisIcon) => {
-        console.log(thisIcon);
+        // console.log(thisIcon);
         const {name, prefix, type, family} = thisIcon;
         // console.log(thisIcon);
+        //prendo l'indice di ogni type dell'oggetto
+        const indexOfType = iconType.indexOf(type);
+        console.log(name, indexOfType);
+        //recupero colore corrispondente del tipo
+        const iconColor = colors[indexOfType];
+        console.log(iconColor);
+
         $('.icon-container').append(`
             <div class='icons'>
-                <i class="${family} ${prefix}${name} fa-2x"></i>
+                <i class="${family} ${prefix}${name} fa-2x" style="color: ${iconColor}""></i>
                 <p>${name}</P>
             </div>`);
     });
