@@ -115,7 +115,7 @@ $(document).ready(function(){
 
 
     //creo array di colori
-    const colors = ['green', 'pink', 'blue'];
+    const colors = ['green', 'pink', 'gray'];
     const iconType = [];
 
     //scorro ogni oggetto di icons per prendere il suo type
@@ -136,10 +136,37 @@ $(document).ready(function(){
 
     //aggiungo option per ogni tipo di icona
     iconType.forEach((thisIconType) => {
-        console.log(thisIconType);
+        // console.log(thisIconType);
         $('.select').append(`
             <option value="${thisIconType}">${thisIconType}</option>"
         `)
+    });
+
+    $('.select').change(() => {
+        const selectedType = $('select').val();
+        // console.log(selectedType);
+
+        //svuoto contenitore
+        $('.icon-container').empty();
+
+        if (selectedType != "") {
+            //filtro le icone
+            const selectedIcons = icons.filter((thisIcon) =>{
+                return selectedType == thisIcon.type;
+
+            });
+            selectedIcons.forEach((thisIcon) => {
+                printToPage(thisIcon);
+            });
+
+        } else {
+            icons.forEach((thisIcon) => {
+                printToPage(thisIcon);
+            });
+
+        }
+
+
 
     });
 
@@ -150,8 +177,11 @@ $(document).ready(function(){
     // proprio nome.
 
     icons.forEach((thisIcon) => {
-        // console.log(thisIcon);
-        const {name, prefix, type, family} = thisIcon;
+        printToPage(thisIcon);
+    });
+
+    function printToPage(iconObject){
+        const {name, prefix, type, family} = iconObject;
         // console.log(thisIcon);
         //prendo l'indice di ogni type dell'oggetto
         const indexOfType = iconType.indexOf(type);
@@ -162,16 +192,8 @@ $(document).ready(function(){
 
         $('.icon-container').append(`
             <div class='icons'>
-                <i class="${family} ${prefix}${name} fa-2x" style="color: ${iconColor}""></i>
-                <p>${name}</P>
+            <i class="${family} ${prefix}${name} fa-2x" style="color: ${iconColor}""></i>
+            <p>${name}</P>
             </div>`);
-    });
-
-
-
-
-
-
-
-
+        }
 });
