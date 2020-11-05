@@ -128,6 +128,21 @@ $(document).ready(function(){
     });
 
     console.log(iconType);
+    //aggiungere una select per filtrare le icone in
+    // base al tipo.
+    // Popolare le options della select dinamicamente
+    // e, ogni volta che cambia il valore selezionato,
+    // visualizzare le icone corrispondenti.
+
+    //aggiungo option per ogni tipo di icona
+    iconType.forEach((thisIconType) => {
+        console.log(thisIconType);
+        $('.select').append(`
+            <option value="${thisIconType}">${thisIconType}</option>"
+        `)
+
+    });
+
 
 
     // Utilizzando la funzione forEach e il template
@@ -140,10 +155,10 @@ $(document).ready(function(){
         // console.log(thisIcon);
         //prendo l'indice di ogni type dell'oggetto
         const indexOfType = iconType.indexOf(type);
-        console.log(name, indexOfType);
+        // console.log(name, indexOfType);
         //recupero colore corrispondente del tipo
         const iconColor = colors[indexOfType];
-        console.log(iconColor);
+        // console.log(iconColor);
 
         $('.icon-container').append(`
             <div class='icons'>
@@ -151,6 +166,8 @@ $(document).ready(function(){
                 <p>${name}</P>
             </div>`);
     });
+
+
 
 
 

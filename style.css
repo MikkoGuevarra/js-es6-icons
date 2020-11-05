@@ -11,10 +11,14 @@
     padding-top: 100px;
 }
 
-.icon-container {
+.icon-container, .selection {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
+}
+.selection {
+    justify-content: center;
+    padding: 20px 0;
 }
 
 .icons {
