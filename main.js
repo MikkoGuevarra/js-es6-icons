@@ -106,6 +106,30 @@ $(document).ready(function(){
         }
     ];
 
+
+
+    // definire un array di colori e associare ad ogni
+    // tipo di icona un colore.
+    // Visualizzare le icone di colore diverso in base al
+    // tipo.
+
+
+    //creo array di colori
+    const colors = ['green', 'pink', 'blue'];
+    const iconType = [];
+
+    //scorro ogni oggetto di icons per prendere il suo type
+    icons.forEach((currentIcon) => {
+        const {name, prefix, type, family} = currentIcon;
+        if (!iconType.includes(type)) {
+            iconType.push(type);
+        }
+
+    });
+
+    console.log(iconType);
+
+
     // Utilizzando la funzione forEach e il template
     // literal, visualizzare in pagina tutte le icone con il
     // proprio nome.
@@ -120,6 +144,9 @@ $(document).ready(function(){
                 <p>${name}</P>
             </div>`);
     });
+
+
+
 
 
 
